@@ -82,7 +82,7 @@ Example content of the `spyglass.json` file. See [Spyglass Documentation](https:
 			"@vanilla-resourcepack",
 			"@vanilla-mcdoc"
 		],
-		"gameVersion": "1.21.5"
+		"gameVersion": "26.3"
 	}
 }
 ```

@@ -74,7 +74,7 @@ function dah.sch:set {run:'say 1', time: 20}
 			"@vanilla-resourcepack",
 			"@vanilla-mcdoc"
 		],
-		"gameVersion": "1.21.5"
+		"gameVersion": "26.3"
 	}
 }
 ```
