@@ -1,6 +1,7 @@
 {
     "pack": {
-        "pack_format":71,
-        "description": "§6Better Schdule\n§aBy Dahesor"
+        "description": "§6Better Schdule\n§aBy Dahesor",
+        "min_format": 111,
+        "max_format": 125
     }
 }

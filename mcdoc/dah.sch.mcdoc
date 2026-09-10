@@ -45,7 +45,8 @@ dispatch minecraft:storage["dah.sch:task"] to struct{
     temp?: any,
     run2?: any,
     que?: [dah_player_task],
-    retry?: [dah_task]
+    retry?: [dah_task],
+    zzz_dimension_define?: #[id(registry="dimension",definition=true)] string,
 }
 
 dispatch minecraft:storage["dah.sch:new"] to struct{

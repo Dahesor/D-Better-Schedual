@@ -1,5 +1,12 @@
 DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule命令。它可以记录当前的执行者，执行位置，执行朝向，以及在大部分情况下，记录执行维度。在一段时间后还原这些上下文并执行任意命令。若执行时，目标执行者不再存在（死亡，卸载，或是下线），本库也可灵活处理。
 
+## 版本信息
+
+| Minecraft | DBS |
+| -------- | -------- |
+| 1.21.5 ~ 26.2 | [v1.3](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.3.0) |
+| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4) |
+
 ## 使用说明
 
 **首先在storage `dah.sch:new new`中写入需要的参数**：

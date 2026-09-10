@@ -2,9 +2,16 @@
 
 # Introduction
 
-Welcome to D's Better Schedule. This is a library that provides a scheduler that keeps the context.
+D's Better Schedule is a library that provides a scheduler that keeps the context.
 It will record the executor, location, rotation, and in some cases, dimension(see below) of the current context.
 It also focuses on the behavior when the executor entity is offline, dead, or unloaded at the time of execution.
+
+## Version Info
+
+| Minecraft | D's Better Schedule |
+| -------- | -------- |
+| 1.21.5 ~ 26.2 | [v1.3](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.3.0) |
+| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4) |
 
 ## How to Use
 

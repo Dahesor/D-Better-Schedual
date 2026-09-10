@@ -16,7 +16,7 @@ execute if data storage dah.sch:new new.max_retry store result score #retry dah.
 execute if score #retry dah.sch.ram matches 1.. run data modify storage dah.sch:task this.retry set value 1
 execute if score #retry dah.sch.ram matches 1.. store result storage dah.sch:task this.retry int 1 run scoreboard players get #retry dah.sch.ram
 
-execute if data storage dah.sch:new new{flags:["try_dimension"]} run function dah.sch:z_private/parse/dimension/attempt
+execute unless data storage dah.sch:new new{flags:["location_less"]} run function dah.sch:z_private/parse/dimension/get
 execute if data storage dah.sch:new new{offline:"by_server"} run data modify storage dah.sch:task this.force set value 1b
 
 execute if data storage dah.sch:new new.in run data modify storage dah.sch:task this.in set from storage dah.sch:new new.in
