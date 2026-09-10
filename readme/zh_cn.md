@@ -5,7 +5,7 @@ DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule�
 | Minecraft | DBS |
 | -------- | -------- |
 | 1.21.5 ~ 26.2 | [v1.3](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.3.0) |
-| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4) |
+| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4.0) |
 
 ## 使用说明
 
