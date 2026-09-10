@@ -11,7 +11,7 @@ It also focuses on the behavior when the executor entity is offline, dead, or un
 | Minecraft | D's Better Schedule |
 | -------- | -------- |
 | 1.21.5 ~ 26.2 | [v1.3](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.3.0) |
-| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4) |
+| 26.3+ | [v1.4](https://github.com/Dahesor/D-Better-Schedule/releases/tag/v1.4.0) |
 
 ## How to Use
 
