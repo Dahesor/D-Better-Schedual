@@ -1,4 +1,4 @@
-DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule命令。它可以记录当前的执行者，执行位置，执行朝向，以及在大部分情况下，记录执行维度。在一段时间后还原这些上下文并执行任意命令。若执行时，目标执行者不再存在（死亡，卸载，或是下线），本库也可灵活处理。
+DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule命令。它可以记录当前的执行者，执行位置，执行朝向，执行维度。在一段时间后还原这些上下文并执行任意命令。若执行时，目标执行者不再存在（死亡，卸载，或是下线），本库也可灵活处理。
 
 ## 版本信息
 
@@ -29,9 +29,8 @@ DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule�
  * `no_executer`: 不在上下文中记录执行实体。命令总是由服务器执行。
  * `debug`: 向聊天栏输出日志，用于debug。
  * `location_less`: 不在上下文中保存位置与旋转；命令将会在世界出生点执行。
- * `try_dimension`: 尝试记录上下文的执行维度。若执行者为玩家则总是成功。若非玩家，则穷举判断是否为`overworld`, `the_nether`或`the_end`（主世界，下界，末地）；若均失败则假定为`overworld`。你可以向这个穷举列表中添加其他的自定义维度，只需要在函数标签`#dah.sch:known_dimensions`中添加新的函数，执行`execute at @s if predicate {condition:"location_check",predicate:{dimension:"foo:bar"}} run data modify storage dah.sch:task this.in set value "foo:bar"`即可。
 
-`in`: `#[id="dimension"] string` 直接规定一个目标维度执行命令。若存在`try_dimension`则本项无效。
+`in`: `#[id="dimension"] string` 若指定，使用提供的维度覆盖上下文中的维度。
 
 **输入参数后，在目标上下文中执行`function dah.sch:new`以计划本任务。**
 
@@ -41,8 +40,8 @@ DBS(D-Better-Schedule)库提供了一个可以保留命令上下文的schedule�
 data modify storage dah.sch:new new set value {run:"tp ~ ~ ~",time:20}
 function dah.sch:new
 
-# 1秒后将当前位置设置为石头。尝试获取维度，且输出日志。
-data modify storage dah.sch:new new set value {run:"setblock ~ ~ ~ stone",time:20,flags:["debug","try_dimension"]}
+# 1秒后将当前位置设置为石头，且输出日志。
+data modify storage dah.sch:new new set value {run:"setblock ~ ~ ~ stone",time:20,flags:["debug"]}
 function dah.sch:new
 
 # 在10秒或移除该玩家的属性修饰器。若玩家在10秒内下线，则等到玩家上线后再移除。
@@ -54,6 +53,12 @@ function dah.sch:new
 ```mcfunction
 function dah.sch:set {run:'say 1', time: 20}
 ```
+
+## 添加已知维度
+
+若上下文中的维度并非原版的三个维度之一，库会生成猪灵蛮兵实体并从其NBT中获得维度。该过程会需要额外的性能开销。
+
+若想要在其他维度中也直接穷举判断出维度，可以在`#dah.sch:known_dimensions`函数标签中添加维度，执行`execute if predicate {type:"location_check",predicate:{dimension:"foo:bar"}} run data modify storage dah.sch:task this.in set value "foo:bar"`。
 
 ## 依赖库文件
 

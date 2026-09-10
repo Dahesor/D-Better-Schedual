@@ -3,7 +3,7 @@
 # Introduction
 
 D's Better Schedule is a library that provides a scheduler that keeps the context.
-It will record the executor, location, rotation, and in some cases, dimension(see below) of the current context.
+It will record the executor, location, rotation, and dimension of the current context.
 It also focuses on the behavior when the executor entity is offline, dead, or unloaded at the time of execution.
 
 ## Version Info
@@ -35,9 +35,8 @@ What to do if the target entity is not found at the time of execution (offline, 
  * `no_executer`: The executor will not be included in the context; the command will be run by server.
  * `location_less`: The Location and Rotation will not be included in the context; command will be run at world spawn
  * `debug`: Output debug information to chat.
- * `try_dimension`: It will try to find the current dimension. The library will read it from entity data if the executor is a player, or it trys if it is `overworld`, `the_nether` or `the_end`. Otherwise it assumes `overworld`. You may add other custom dimensions into the function tag `#dah.sch:known_dimensions`, running `execute at @s if predicate {condition:"location_check",predicate:{dimension:"foo:bar"}} run data modify storage dah.sch:task this.in set value "foo:bar"` to extend the trial and error list.
 
-`in`: `#[id="dimension"] string` Specifies a dimension to run the command in. This will be overwritten by the `try_dimension` flag.
+`in`: `#[id="dimension"] string` If provided, override the context dimension with the given one.
 
 **Then execute `function dah.sch:new` in the desired context to schdule the command.**
 
@@ -47,8 +46,8 @@ Example:
 data modify storage dah.sch:new new set value {run:"tp ~ ~ ~",time:20}
 function dah.sch:new
 
-# setblock stone at current location after 1s, try to find the current dimension and spit out debug info.
-data modify storage dah.sch:new new set value {run:"setblock ~ ~ ~ stone",time:20,flags:["debug","try_dimension"]}
+# setblock stone at current location after 1s, spit out debug info.
+data modify storage dah.sch:new new set value {run:"setblock ~ ~ ~ stone",time:20,flags:["debug"]}
 function dah.sch:new
 
 # Remove this player's attribute modifier after 10s. If the player goes offline in 10s then remove it after they log back in.
@@ -60,6 +59,14 @@ A simple macro version of the schduler is also provided as `function dah.sch:set
 ```mcfunction
 function dah.sch:set {run:'say 1', time: 20}
 ```
+
+## Adding Known Dimensions
+
+## 添加已知维度
+
+If the context dimension is not one of the vanilla ones, the library will summon a piglin brute and read the dimension out of its NBT. This causes more performance.
+
+You may add a known dimension to the system by adding a function to the function tag `#dah.sch:known_dimensions`, running something like`execute if predicate {type:"location_check",predicate:{dimension:"foo:bar"}} run data modify storage dah.sch:task this.in set value "foo:bar"`.
 
 ## Dependency File
 

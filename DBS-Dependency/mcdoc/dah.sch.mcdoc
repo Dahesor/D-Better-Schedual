@@ -3,8 +3,6 @@ enum(string) dah_flags{
     no_executer = "no_executer",
     /// Output debug information to chat
     debug = "debug",
-    /// It will try to resolve the current dimension. Assumes minecraft:overworld if fail.
-    try_dimension = "try_dimension",
     /// Position and rotation will be ignored; run at world spawn
     location_less = "location_less",
 }
@@ -18,7 +16,7 @@ struct dah_task_raw {
     run?: #[command] string,
     /// The number of ticks to wait before running the command.  *REQUIRED*
     time?: int,
-    /// Specifies the dimension to run the command in. If not specified, the command will always run in minecraft:overworld.
+    /// If provided, override the context dimension with the given one.
     in?: #[id="dimension"] string,
     /// What to do if the target entity is not found. Defaults to "discard". Options:
     ///     discard: Do nothing and remove the task.
@@ -29,8 +27,7 @@ struct dah_task_raw {
     /// Defines extra behavior for the task. Options:
     ///     no_executer: The command will be run by server.
     ///     debug: Output debug information to chat.
-    ///     try_dimension: It will try to resolve the current dimension. Assumes minecraft:overworld if fail.
-    ///     location_less:  Position and rotation will be ignored; run at world spawn
+    ///     location_less:  Position, rotation, and dimension will be ignored; run at world spawn
     flags?: [dah_flags],
     /// if **offline** is set to `discard` or `by_server`, then if entity is not found at execution, the task will be retiried on the next tick, up to this number of times.
     /// If all retries failed then it proceeds to be discarded or executed by server

@@ -7,6 +7,7 @@ data modify storage dah.sch:task this.run set from storage dah.sch:new new.run
 
 execute unless data storage dah.sch:new new{flags:["location_less"]} summon marker run function dah.sch:z_private/parse/location
 
+execute unless data storage dah.sch:new new{flags:["location_less"]} run function dah.sch:z_private/parse/dimension/get
 execute if data storage dah.sch:new new.in run data modify storage dah.sch:task this.in set from storage dah.sch:new new.in
 execute if data storage dah.sch:new new.flags run function dah.sch:z_private/parse/flags_handler
 
